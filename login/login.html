@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MyApp</title>
+    <link rel="stylesheet" href="login-style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to MyApp</h2>
+        <p class="error" id="error-message">Invalid email or password</p>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <span id="toggle-password" onclick="togglePassword()">
+                    <svg id="eye-icon" class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <button type="submit" onclick="handleLogin()">Login</button>
+        <a href="../index.html" class="back-link">Back to Home</a>
+    </div>
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="cancelLogin()">
+                <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </span>
+            <h3>Welcome!</h3>
+            <p id="modal-name"></p>
+            <p id="modal-email"></p>
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

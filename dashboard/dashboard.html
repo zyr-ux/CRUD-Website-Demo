@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - L&T Skills Tab</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>L&T Skills Tab</h1>
+            <a href="../index.html" class="logout">Logout</a>
+        </div>
+    </header>
+    <main class="split-container">
+        <div class="left-panel">
+            <h2>Manage Admins</h2>
+            <button id="toggle-admin-form-btn" onclick="toggleAddAdminForm()">Add Admin</button>
+            <div id="add-admin-form" class="form-container hidden">
+                <h3>Add New Admin</h3>
+                <div class="form-group">
+                    <label for="new-admin-name">Name</label>
+                    <input type="text" id="new-admin-name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="new-admin-email">Email</label>
+                    <input type="email" id="new-admin-email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="new-admin-password">Password</label>
+                    <input type="password" id="new-admin-password" placeholder="Enter password">
+                </div>
+                <button onclick="addAdmin()">Add Admin</button>
+            </div>
+            <h3>All Admins</h3>
+            <div id="admin-list"></div>
+        </div>
+        <div class="right-panel">
+            <h2>Manage Users</h2>
+            <button id="toggle-user-form-btn" onclick="toggleAddUserForm()">Add User</button>
+            <div id="add-user-form" class="form-container hidden">
+                <h3>Add New User</h3>
+                <div class="form-group">
+                    <label for="new-user-name">Name</label>
+                    <input type="text" id="new-user-name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="new-user-email">Email</label>
+                    <input type="email" id="new-user-email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="new-user-skills">Skills (comma-separated)</label>
+                    <input type="text" id="new-user-skills" placeholder="e.g., JavaScript, Python">
+                </div>
+                <button onclick="addUser()">Add User</button>
+            </div>
+            <h3>All Users</h3>
+            <div id="user-list"></div>
+        </div>
+    </main>
+    <div class="modal" id="edit-admin-modal">
+        <div class="modal-content">
+            <h3>Edit Admin</h3>
+            <div class="form-group">
+                <label for="edit-admin-name">Name</label>
+                <input type="text" id="edit-admin-name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="edit-admin-email">Email</label>
+                <input type="email" id="edit-admin-email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="edit-admin-password">Password</label>
+                <input type="password" id="edit-admin-password" placeholder="Enter password">
+            </div>
+            <div class="modal-actions">
+                <button onclick="saveAdminChanges()">Save</button>
+                <button onclick="closeEditAdminModal()" class="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="edit-user-modal">
+        <div class="modal-content">
+            <h3>Edit User</h3>
+            <div class="form-group">
+                <label for="edit-user-name">Name</label>
+                <input type="text" id="edit-user-name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="edit-user-email">Email</label>
+                <input type="email" id="edit-user-email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="edit-user-skills">Skills (comma-separated)</label>
+                <input type="text" id="edit-user-skills" placeholder="e.g., JavaScript, Python">
+            </div>
+            <div class="modal-actions">
+                <button onclick="saveUserChanges()">Save</button>
+                <button onclick="closeEditUserModal()" class="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+    <script>
+        window.onload = loadDashboard;
+    </script>
+</body>
+</html>

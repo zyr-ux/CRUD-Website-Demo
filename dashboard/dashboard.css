@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: url('../assests/L&T_BG_2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+}
+header {
+    background-color: #1f2937; /* darker header */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+.logout {
+    background: #dc2626;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+.logout:hover {
+    transform: scale(1.05);
+}
+.split-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    gap: 32px;
+    align-items: flex-start;
+}
+.left-panel, .right-panel {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    width: 50%;
+    min-width: 0;
+}
+.left-panel:hover, .right-panel:hover {
+    transform: translateY(-3px);
+}
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 16px;
+}
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-top: 16px;
+}
+p {
+    margin: 8px 0;
+    color: #4b5563;
+    font-size: 14px;
+}
+.admin-item, .user-item {
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    position: relative;
+    border-left: 4px solid #3b82f6;
+    transition: background 0.3s ease;
+}
+.admin-item:hover, .user-item:hover {
+    background: #eff6ff;
+}
+.admin-item.superadmin {
+    border-left-color: #f59e0b;
+}
+.actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 12px;
+}
+.action-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    stroke: #6b7280;
+    transition: stroke 0.2s ease, transform 0.2s ease;
+}
+.action-icon:hover {
+    transform: scale(1.1);
+}
+.action-icon.edit:hover {
+    stroke: #3b82f6;
+}
+.action-icon.deactivate:hover {
+    stroke: #dc2626;
+}
+.action-icon.activate:hover {
+    stroke: #10b981;
+}
+.action-icon.delete:hover {
+    stroke: #dc2626;
+}
+.action-icon.disabled {
+    stroke: #d1d5db;
+    cursor: not-allowed;
+}
+.form-container {
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+.form-container.hidden {
+    max-height: 0;
+    padding: 0 16px;
+    opacity: 0;
+    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+}
+.form-container.visible {
+    max-height: 500px;
+    padding: 16px;
+    opacity: 1;
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+}
+.form-group {
+    margin-bottom: 16px;
+}
+label {
+    display: block;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1f2937;
+    transition: border-color 0.2s ease;
+}
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+button {
+    width: 100%;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+#toggle-admin-form-btn, #toggle-user-form-btn {
+    background: #059669;
+    margin-bottom: 16px;
+    width: auto;
+    padding: 10px 20px;
+}
+#toggle-admin-form-btn:hover, #toggle-user-form-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+body.modal-open .split-container {
+    filter: blur(4px);
+}
+.modal-content {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+.modal-actions button {
+    flex: 1;
+}
+.modal-actions .cancel {
+    background: #dc2626;
+}
+.modal-actions .cancel:hover {
+    box-shadow: 0 4px 12px rgba(248, 113, 113, 0.2);
+}
